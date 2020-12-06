@@ -41,7 +41,7 @@ pipeline {
         stage('Deploy our image') {
             steps {
                 script {
-                    docker.withRegistry( '', registryCredential ) {
+                    docker.withRegistry( registryCredential ) {
                         dockerImage.push()
                     }
                 }
@@ -50,7 +50,7 @@ pipeline {
         stage('Pull our image') {
             steps{
                 script{
-                    docker.withRegistry( '', registryCredential ) {
+                    docker.withRegistry( registryCredential ) {
                         dockerImage.pull()
                    
                 }
