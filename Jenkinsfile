@@ -61,15 +61,15 @@ pipeline {
     stage('Run Image'){
            steps{
                sh ''' 
-               if [ $(docker ps -qf "name=cool") ]
+               if [ $(docker ps -qf "name=cool_wright") ]
                 then
                 echo "from if block"
-                docker kill cool && docker rm cool
-                docker run -d -p 1234:8080 --name cool "${registry}":"${BUILD_NUMBER}"
+                docker kill cool_wright && docker rm cool_wrightl
+                docker run -d -p 1234:8080 --name cool_wright "${registry}":"${BUILD_NUMBER}"
                 docker ps
                 else
                 echo "from else block"
-                docker run -d -p 1234:8080 --name cool "${registry}":"${BUILD_NUMBER}"
+                docker run -d -p 1234:8080 --name cool_wright "${registry}":"${BUILD_NUMBER}"
                 docker ps
                 fi
                '''
